@@ -397,15 +397,11 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  let strCase = '';
-  for (let i = 0; i <= str.length; i += 1) {
-    if (str[i] === str[i].toLowerCase()) {
-      strCase += str[i].toUpperCase();
-    } else {
-      strCase += str[i].toLowerCase();
-    }
-  }
-  return strCase;
+  return str.replace(/[A-Za-z]/g, (elem) => {
+    return elem === elem.toUpperCase()
+      ? elem.toLowerCase()
+      : elem.toUpperCase();
+  });
 }
 
 /**
@@ -451,7 +447,7 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<a>') => 'a'
  */
 function unbracketTag(str) {
-  return str.slice(1, str.length - 1);
+  return str.slice(1, -1);
 }
 
 /**
